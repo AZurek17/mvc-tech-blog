@@ -6,20 +6,20 @@ class Comment extends Model {}
 
 Comment.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-        },
+        // id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     primaryKey: true,
+        //     autoIncrement: true,
+        // },
         description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        comment_date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-          },
+        // comment_date: {
+        //     type: DataTypes.DATE,
+        //     allowNull: false,
+        //   },
         post_id: {
             type: DataTypes.INTEGER,
             references: {
@@ -27,20 +27,18 @@ Comment.init(
                 key: 'id',
             }
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        },
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id',
+        //     },
+        // },
     },
 ),
 {
     sequelize,
     timestamps: true,
-    freezeTableName: true,
-    underscored: true,
     modelName: 'comment'
 };
 

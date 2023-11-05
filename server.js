@@ -11,9 +11,17 @@ const helpers = require('./utils/helpers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// add const sess = { secret: } -- see act19
+const sess = {
+  secret: 'secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
 
-// add app.use(session(sess)):
+app.use(session(sess));
 
 const hbs = exphbs.create({ helpers });
 
