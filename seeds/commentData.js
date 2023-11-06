@@ -4,8 +4,11 @@ const commentData = [
     {
         description: "testing blog seed"
     },
+    {
+        description: "testing1 blog1 seed1"
+    },
 ];
 
-const seedComment = () => Post.bulkCreate(commentData);
+const seedComment = () => Comment.bulkCreate(commentData);
 
 module.exports = seedComment;

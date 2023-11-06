@@ -14,3 +14,5 @@ const areAuth = (req, res, next) => {
         next();
     }
 }
+
+module.exports = { withAuth, areAuth };
