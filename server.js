@@ -7,13 +7,13 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
+const { clear } = require('console');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sess = {
   secret: 'secret',
-  cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
