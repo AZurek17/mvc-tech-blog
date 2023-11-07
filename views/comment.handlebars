@@ -1,8 +1,43 @@
-<section class="comment">
-  <img src="/images/{{painting.filename}}" alt="{{painting.description}}">
-  <div class="comment-details">
-    <h3>{{comment.title}}</h3>
-    <p>By: {{comment.user_name}}</p>
-    <p>{{ format_date comment.comment_date}}</p>
-  </div>
+<h1>The Tech Blog</h1>
+<section id="currentPostComment">
+  <section class="card">
+      <div class="card-body">
+        <h3 class="card-title">{{postData.title}}</h3> 
+        <h5>Posted by {{dbPost.user.username}} on {{dbPost.createdAt}}</h5>
+        <p class="card-text">{{dbPost.description}}</p>
+    </div>
+  </section>
+{{#each dbPost.description}}
+  <section class="card">
+    <div class="card-body">
+      <p>Comment</p>
+      <p class="card-text">{{body}}</p>
+    </div>
+  </section>
+{{/each}}
 </section>
+<section class="card text-center">
+<div class="card-body">
+  <h3 class="card-title">Comment</h3>
+  <form id="newComment">
+    <div class="card-text"></div>
+      <input id="hiddenCommentId" hidden="true" value="{{dbPost.id}}"></input>
+      <textarea id="comment" placeholder="Type your comment here..."></textarea>
+    </div>
+    <button id="create">Submit</button>
+</form>
+</div>
+</section>
+
+<script src="/js/comment.js"></script>
+
+
+
+
+{{!-- <section class="card" id="currentBlogComment"> --}}
+  {{!-- <div class="card-body"> --}}
+    {{!-- <h3>{{comment.title}}</h3> --}}
+    {{!-- <p>By: {{comment.description}}</p> --}}
+    {{!-- <p>{{ format_date comment.comment_date}}</p> --}}
+  {{!-- </div> --}}
+{{!-- </section> --}}

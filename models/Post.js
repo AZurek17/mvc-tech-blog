@@ -7,13 +7,17 @@ Post.init(
     {
         title: {
             type: DataTypes.STRING,
+            allowNull: false
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
+            allowNull: false
         },  
     },
     {
         sequelize,
+        freezeTableName: true,
+        underscored: true,
         timestamps: false,
         modelName: 'post',
     }

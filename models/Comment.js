@@ -12,12 +12,13 @@ Comment.init(
         date: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW,
-        }
+        },
     },
-
 {
     sequelize,
-    timestamps: true,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
     modelName: 'comment',
 }
 );

@@ -1,80 +1,84 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../../models');
+const {withAuth, areAuth } = require('../../utils/auth');
+
 //Get all Posts
-router.get('/', (req, res) => {
-    Post.findAll().then((postData) =>{
-        res.json(postData);
+router.get("/", (req, res) => {
+  Post.findAll({include:[User, Comment]})
+    .then(dbPosts => {
+      res.json(dbPosts);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ msg: "Error occured!", err });
     });
 });
 
 //Find Post by ID
-router.get('/:id', (req, res) => {
-    Post.findByPk(req.params.id).then((postData) => {
-        res.json(postData);
+router.get("/:id", (req, res) => {
+  Post.findByPk(req.params.id,{include:[User, Comment]})
+    .then(dbPost => {
+      res.json(dbPost);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ msg: "an error occured", err });
     });
 });
 
 //Create New Post
-router.post('/', (req, res) => {
-    Post.create(req.body)
-    .then((newPost) => {
-        res.json(newPost);
+router.post("/", (req, res) => {
+    if(!req.session.user){
+      return res.status(401).json({msg:"Please login!"})
+    }
+    Post.create({
+      title:req.body.title,
+      description:req.body.description,
+      userId:req.session.user.id
     })
-    .catch((err) => {
-        res.json(err);
+      .then(newPost => {
+        res.json(newPost);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ msg: "Error occured!", err });
+      });
+});
+
+
+//Update Route
+router.put("/:id", (req, res) => {
+  if(!req.session.user){
+    return res.status(401).json({msg:"Please login!"})
+  }
+  Post.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(updatedPost => {
+      res.json(updatedPost);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ msg: "Error occured!", err });
     });
 });
 
-//Update Route
-router.post('/', async (req, res) => {
-    try {
-      const dbPostData = await User.create({
-        title,
-        description,
-        user_name,
-      });
-  
-      // Set up sessions with a 'loggedIn' variable set to `true`
-      req.session.save(() => {
-        req.session.loggedIn = true;
-  
-        res.status(200).json(dbPostData);
-      });
-    } catch (err) {
+router.delete("/:id", (req, res) => {
+  if(!req.session.user){
+    return res.status(401).json({msg:"Please login!"})
+  }
+    Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(delPost => {
+      res.json(delPost);
+    })
+    .catch(err => {
       console.log(err);
-      res.status(500).json(err);
-    }
-  });
-
-  router.put ('/:id', (req, res) => {
-    Post.update (
-        {
-            Title,
-        },
-        {
-          where: {
-            id: req.params.id
-          },
-        }
-    )
-    .then((updatePost) => {
-        res.json(updatePost)
-    })
-    .catch ((err) => res.json)
-  })
-
-
-  //Delete Post
-  router.delete('./:id', (req, res) => {
-    Post.destroy ({
-        where: {
-            id: req.params.id,
-        }
-    })
-    .then((deletePost) => {
-        res.json(deletePost);
-    })
-    .catch((err) => res.json(err));
-  });
+      res.status(500).json({ msg: "an error occured", err });
+    });
+});
 
   module.exports = router;
