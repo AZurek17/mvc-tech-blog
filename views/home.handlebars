@@ -1,3 +1,9 @@
-{{#each posts as |post|}}
-{{> post-details}}
+{{#each posts}}
+  <section class="card">
+    <a href="/posts/{{id}}" class="card-body">
+        <h3 class="card-title">{{title}}</h3> 
+        <h5>Posted by {{user.username}} on {{createdAt}}</h5>
+        <p class="card-text">{{description}}</p>
+    </a>
+  </section>
 {{/each}}

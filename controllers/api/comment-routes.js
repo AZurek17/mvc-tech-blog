@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
     return res.status(401).json({msg:"Please login first!"})
 }
   Comment.create({
-    body:req.body.body,
+    description:req.body.body,
     userId:req.session.user.id,
     postId:req.body.postId
   })
