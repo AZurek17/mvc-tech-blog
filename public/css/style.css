@@ -46,13 +46,14 @@ button {
   margin: 5px;
 }
 
-#newPost {
+/* #newPost {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-}
+} */
 
 #content, #editedContent {
+  width: 60vw;
   margin-left: 10vw;
   margin-right: 10vw;
 }
@@ -69,5 +70,5 @@ margin-top:20px;
 }
 
 #title, #editedTitle {
-  width: 80vw;
+  width: 60vw;
 }

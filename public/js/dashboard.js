@@ -9,7 +9,7 @@ function hideCreateNew() {
 
 hideCreateNew();
 
-newComment.addEventListener("submit",event=>{
+newComment.addEventListener("submit",(event)=>{
     event.preventDefault()
     console.log('click')
     existingPosts.hidden=true;
@@ -17,7 +17,7 @@ newComment.addEventListener("submit",event=>{
     createNew.hidden =false;
 });
 
-newPost.addEventListener("submit", event => {
+newPost.addEventListener("submit", (event) => {
     var title = document.querySelector("#title").value;
     var content = document.querySelector("#content").value
     event.preventDefault()

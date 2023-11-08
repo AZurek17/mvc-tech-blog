@@ -11,6 +11,11 @@ const postData = [
         description: "testing second post",
         userId: 2
     },
+    {
+        title: "test 3",
+        description: "testing third post",
+        userId: 2
+    },
 ];
 
 const seedPost = () => Post.bulkCreate(postData);

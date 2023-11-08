@@ -2,14 +2,19 @@ const { Comment } = require('../models');
 
 const commentData = [
     {
-        description: "testing comment blog",
+        description: "hello test",
         postId: 1,
         userId: 1,
     },
     {
-        description: "testing1 comment blog1",
+        description: "Hello Test1",
         postId: 2,
         userId: 2,
+    },
+    {
+        description: "Hello Test2",
+        postId: 3,
+        userId: 1,
     },
 ];
 

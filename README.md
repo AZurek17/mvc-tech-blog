@@ -1,6 +1,5 @@
 # mvc-tech-blog ![GitHub License Badge](https://img.shields.io/badge/License-MIT-yellow)
 
-[Link to Walkthrough Video](#)
 [Link to Deployed Site](https://pacific-chamber-71617-abe05841fecd.herokuapp.com/)
 
 ![mvc-tech-blog screenshot](./Screenshot.png)

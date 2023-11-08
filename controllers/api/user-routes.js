@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 //logout
 router.get("/logout",(req,res)=>{
   req.session.destroy();
-  res.redirect('/');
+  res.redirect('/login');
 })
 
 //find user by id
