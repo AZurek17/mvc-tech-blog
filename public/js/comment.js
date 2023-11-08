@@ -5,7 +5,7 @@ document.querySelector("#newComment").addEventListener("submit",event=>{
       description:document.querySelector("#comment").value,
       postId:document.querySelector("#hiddenCommentId").value,
   }
-  fetch("/comments",{
+  fetch("/api/comments", {
       method:"POST",
       body:JSON.stringify(comment),
       headers:{"Content-Type":"application/json"}
@@ -24,7 +24,7 @@ document.querySelector("#newComment").addEventListener("submit",event=>{
 //     event.preventDefault();
   
 //     const description = document.querySelector('#comment').value;
-//     const user_id = document.querySelector('#user_id').value;
+//     const user_id = document.querySelector("#hiddenCommentId").value;
 
 //     const response = await fetch(`/api/comments`, { 
 //         method: 'POST',

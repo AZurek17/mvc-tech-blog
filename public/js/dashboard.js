@@ -13,7 +13,7 @@ newComment.addEventListener("submit",event=>{
     event.preventDefault()
     console.log('click')
     existingPosts.hidden=true;
-    newPost.hidden =true;
+    newPost.hidden =false;
     createNew.hidden =false;
 });
 
