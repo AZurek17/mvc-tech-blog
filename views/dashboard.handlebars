@@ -1,11 +1,11 @@
-<h2>Dashboard</h2>
+<h2>MyDashboard</h2>
 <section id="existingPosts">
 {{#each posts}}
   <section class="card">
       <a href="/posts/{{id}}" class="card-body">
         <h3 class="card-title">{{title}}</h3> 
         <h5>Posted on {{createdAt}}</h5>
-        <p class="card-text">{{content}}</p>
+        <p class="card-text">{{description}}</p>
     </a>
   </section>
 {{/each}}
@@ -15,9 +15,8 @@
   <h3 class="card-title">Create New Post</h3>
   <form id="newPost">
     <div class="card-text"></div>
-      <label for="title">Title</label>
+      <label for="title">Title</label><br>
       <input type="text" id="title" placeholder="title">
-      {{!-- <textarea id="title" placeholder="title"></textarea> --}}
     </div>
     <div class="card-text"></div>
       <label for="content">Content</label>

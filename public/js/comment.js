@@ -5,12 +5,10 @@ document.querySelector("#newComment").addEventListener("submit",event=>{
       description:document.querySelector("#comment").value,
       postId:document.querySelector("#hiddenCommentId").value,
   }
-  fetch("/api/comments",{
+  fetch("/comments",{
       method:"POST",
       body:JSON.stringify(comment),
-      headers:{
-          "Content-Type":"application/json"
-      }
+      headers:{"Content-Type":"application/json"}
   }).then(res=>{
       if(res.ok){
           console.log("comment posted")
@@ -25,7 +23,7 @@ document.querySelector("#newComment").addEventListener("submit",event=>{
 // async function newCommentHandler(event) {
 //     event.preventDefault();
   
-//     const description = document.querySelector('#description').value;
+//     const description = document.querySelector('#comment').value;
 //     const user_id = document.querySelector('#user_id').value;
 
 //     const response = await fetch(`/api/comments`, { 

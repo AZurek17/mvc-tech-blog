@@ -5,8 +5,8 @@ const {withAuth, areAuth } = require('../../utils/auth');
 //Get all Posts
 router.get("/", (req, res) => {
   Post.findAll({include:[User, Comment]})
-    .then(dbPosts => {
-      res.json(dbPosts);
+    .then(dbPost => {
+      res.json(dbPost);
     })
     .catch(err => {
       console.log(err);

@@ -5,9 +5,9 @@ const {withAuth, areAuth } = require('../utils/auth');
 // route to get all posts
 router.get('/', (req, res) => {
   Post.findAll({include: [User]}).then(posts => {
-      const dbPosts = posts.map(post=>post.get({plain:true}))
+      const dbPost = posts.map(post=>post.get({plain:true}))
       const loggedIn = req.session.user?true:false;
-      res.render('home', {posts:dbPosts, loggedIn, username:req.session.user?.username})
+      res.render('home', {posts:dbPost, loggedIn, username:req.session.user?.username})
   })
 })
 
@@ -43,12 +43,12 @@ router.get('/dashboard', (req, res) => {
     if (!req.session.user) {
       return res.redirect('/login');
       }
-      Post.findByPk(req.params.user.id,{include:[User, {model: Comment, include: [User]}]})
-      .then(postData => {
-        const dbPost = postData.get({plain:true})
+      Post.findByPk(req.params.id,{include:[User, {model: Comment, include: [User]}]})
+      .then(dbData => {
+        const dbPost = dbData.get({plain:true})
         const loggedIn = req.session.user?true:false
         console.log(dbPost);
-         if(postData.userId != req.session.user.id) {
+         if(dbData.userId != req.session.user.id) {
          return res.render('comment', {dbPost, loggedIn, username:req.session?.username})
       }
       res.render("updateDelete", {dbPost, loggedIn, username:req.session.user?.username})
