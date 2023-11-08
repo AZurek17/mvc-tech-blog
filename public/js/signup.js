@@ -9,9 +9,7 @@
     fetch("/api/users/",{
         method:"POST",
         body:JSON.stringify(userData),
-        headers:{
-            "Content-Type":"application/json"
-        }
+        headers:{"Content-Type":"application/json"}
     }).then(res=>{
         if(res.ok){
             console.log("user is signed up")

@@ -19,16 +19,16 @@ newComment.addEventListener("submit",event=>{
 
 newPost.addEventListener("submit", event => {
     var title = document.querySelector("#title").value;
-    var description = document.querySelector("#content").value
+    var content = document.querySelector("#content").value
     event.preventDefault()
     console.log('you clicked me')
-    if (!title || !description) {
+    if (!title || !content) {
         alert('Please enter both title and content')
         return;
     }
     const postObj = {
         title: title,
-        description: description,
+        content: content,
     }
     fetch("/api/posts",{
         method:"POST",

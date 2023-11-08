@@ -1,6 +1,6 @@
-<h1>Dashboard</h1>
+<h2>Dashboard</h2>
 <section id="existingPosts">
-{{#each blogs}}
+{{#each posts}}
   <section class="card">
       <a href="/posts/{{id}}" class="card-body">
         <h3 class="card-title">{{title}}</h3> 
@@ -15,8 +15,9 @@
   <h3 class="card-title">Create New Post</h3>
   <form id="newPost">
     <div class="card-text"></div>
-      <label for="title">Title</label><br>
+      <label for="title">Title</label>
       <input type="text" id="title" placeholder="title">
+      {{!-- <textarea id="title" placeholder="title"></textarea> --}}
     </div>
     <div class="card-text"></div>
       <label for="content">Content</label>
@@ -29,4 +30,4 @@
 <form id="newComment">
     <button>+ New Post</button>
 </form>
-<script src="../public/js/dashboard.js"></script>
+<script src="./js/dashboard.js"></script>
