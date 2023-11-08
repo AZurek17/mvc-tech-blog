@@ -12,22 +12,23 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sess = {
-  secret: 'secret',
+  secret: 'secret', //process.env.DB_SESSION_SECRET,
   cookie: {
-    maxAge: 3600000,
+    maxAge: 3600000, //1hr
     httpOnly: false,
     secure: false,
     sameSite: 'strict',
-
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize,
+    }),
   },
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
+
 };
 
 app.use(session(sess));
+app.use(express.static('public'));
 
 const hbs = exphbs.create({ helpers });
 
