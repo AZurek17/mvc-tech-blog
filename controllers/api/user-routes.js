@@ -61,7 +61,7 @@ router.post("/login", (req, res) => {
       if (!foundUser) {
         return res
           .status(400)
-          .json({ msg: "Incorrect email or password, please try again" });
+          .json({ msg: "Incorrect email or password, try again" });
       }
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.user = {
@@ -72,7 +72,7 @@ router.post("/login", (req, res) => {
       } else {
         return res
           .status(400)
-          .json({ msg: "Incorrect email or password, please try again" });
+          .json({ msg: "Incorrect email or password, try again" });
       }
     })
     .catch((err) => {
@@ -94,7 +94,7 @@ router.put("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 
@@ -110,7 +110,7 @@ router.delete("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 

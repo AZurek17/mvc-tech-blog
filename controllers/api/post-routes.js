@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Post, Comment, User } = require("../../models");
-const { withAuth, areAuth } = require("../../utils/auth");
+// const { withAuth, areAuth } = require("../../utils/auth");
 
 //Get all Posts
 router.get("/", (req, res) => {
@@ -22,7 +22,7 @@ router.get("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 
@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
       description: req.body.description,
       userId: req.session.user.id,
     });
-    res.status(201).json("You created a new post!");
+    res.status(201).json("Created a new post!");
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -56,7 +56,7 @@ router.put("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 
@@ -74,7 +74,7 @@ router.delete("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 
