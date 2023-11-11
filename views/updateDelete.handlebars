@@ -3,7 +3,7 @@
   <section class="card">
       <div class="card-body">
         <h3 class="card-title">{{dbPost.title}}</h3> 
-        <h5>Posted on {{dbPost.createdAt}}</h5>
+        <h5>Posted by {{dbPost.user.username}} on {{dbPost.createdAt}}</h5>
         <p class="card-text">{{dbPost.content}}</p>
     </div>
   </section>

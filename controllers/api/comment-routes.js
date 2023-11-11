@@ -4,12 +4,12 @@ const { Comment, Post, User } = require("../../models");
 //find all comments
 router.get("/", (req, res) => {
   Comment.findAll({ include: [User, Post] })
-    .then((dbComments) => {
-      res.json(dbComments);
+    .then((dbComment) => {
+      res.json(dbComment);
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 
@@ -21,17 +21,18 @@ router.get("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 
 //post comment
 router.post("/", (req, res) => {
   if (!req.session.user) {
-    return res.status(401).json({ msg: "Please login first!" });
+    return res.status(401).json({ msg: "Must login first!" });
   }
   Comment.create({
     description: req.body.description,
+    // date: req.body.date,
     userId: req.session.user.id,
     postId: req.body.postId,
   })
@@ -40,14 +41,14 @@ router.post("/", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 
 //update comment
 router.put("/:id", (req, res) => {
   if (!req.session.user) {
-    return res.status(401).json({ msg: "Please login first!" });
+    return res.status(401).json({ msg: "Must login first!" });
   }
   Comment.update(req.body, {
     where: {
@@ -59,14 +60,14 @@ router.put("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 
 //delete comment
 router.delete("/:id", (req, res) => {
   if (!req.session.user) {
-    return res.status(401).json({ msg: "Please login first!" });
+    return res.status(401).json({ msg: "Must login first!" });
   }
   Comment.destroy({
     where: {
@@ -78,7 +79,7 @@ router.delete("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "Error occured", err });
     });
 });
 

@@ -1,12 +1,13 @@
+
 <section id="currentPostComment">
   <section class="card">
       <div class="card-body">
         <h3 class="card-title">{{dbPost.title}}</h3> 
-        <h5>Posted by {{dbPost.user.username}} on {{dbPost.createdAt}}</h5>
+        <h5>Posted on {{dbPost.createdAt}}</h5>
         <p class="card-text">{{dbPost.description}}</p>
     </div>
   </section>
-{{#each dbPost.description}}
+{{#each dbPost.comments}}
   <section class="card">
     <div class="card-body">
       <p>Comment</p>

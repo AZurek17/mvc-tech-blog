@@ -1,32 +1,30 @@
- 
-document.querySelector("#newComment").addEventListener("submit",(event)=>{
+document.querySelector("#newComment").addEventListener("submit", (event) => {
   event.preventDefault();
   const comment = {
-      description:document.querySelector("#comment").value,
-      commentId:document.querySelector("#hiddenCommentId").value,
-  }
+    description: document.querySelector("#comment").value,
+    postId: document.querySelector("#hiddenCommentId").value,
+  };
   fetch("/api/comments", {
-      method:"POST",
-      body:JSON.stringify(comment),
-      headers:{"Content-Type":"application/json"}
-  }).then(res=>{
-      if(res.ok){
-          console.log("comment posted")
-          location.reload()
-      } else {
-          alert("please try again")
-      }
-  })
-})
-
+    method: "POST",
+    body: JSON.stringify(comment),
+    headers: { "Content-Type": "application/json" },
+  }).then((res) => {
+    if (res.ok) {
+      console.log("comment posted");
+      location.reload();
+    } else {
+      alert("Try again");
+    }
+  });
+});
 
 // async function newCommentHandler(event) {
 //     event.preventDefault();
-  
+
 //     const description = document.querySelector('#comment').value;
 //     const user_id = document.querySelector("#hiddenCommentId").value;
 
-//     const response = await fetch(`/api/comments`, { 
+//     const response = await fetch(`/api/comments`, {
 //         method: 'POST',
 //         body: JSON.stringify({
 //           description,
@@ -36,13 +34,12 @@ document.querySelector("#newComment").addEventListener("submit",(event)=>{
 //           'Content-Type': 'application/json',
 //         },
 //       });
-    
+
 //       if (response.ok) {
 //         document.location.replace('/');
 //       } else {
 //         alert('Failed to add comment');
 //       }
 //     }
-    
+
 //     document.querySelector('.new-comment-form').addEventListener('submit', newCommentHandler);
-   

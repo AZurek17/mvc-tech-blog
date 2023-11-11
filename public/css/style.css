@@ -9,7 +9,8 @@ body {
   background-color: rgb(230, 239, 239);
 }
 
-header, h1 {
+header,
+h1 {
   background-color: #2c04bd;
   padding: 10px;
   color: white !important;
@@ -36,7 +37,8 @@ header a {
   background-color: azure;
 }
 
-.card h5, .card p {
+.card h5,
+.card p {
   color: black;
   font-style: normal;
 }
@@ -46,29 +48,33 @@ button {
   margin: 5px;
 }
 
-#newcomment {
+#newComment {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-#content, #editedContent {
+#content,
+#editedContent {
   width: 60vw;
   margin-left: 10vw;
   margin-right: 10vw;
 }
 
-#create, #update, #delete {
+#create,
+#update,
+#delete {
   margin-left: 30vw;
   margin-right: 30vw;
   margin-top: 20px;
 }
 
 #comment {
-width: 80vw;
-margin-top:20px;
+  width: 80vw;
+  margin-top: 20px;
 }
 
-#title, #editedTitle {
+#title,
+#editedTitle {
   width: 60vw;
 }

@@ -4,7 +4,7 @@ const { withAuth, areAuth } = require("../../utils/auth");
 
 //Get all Posts
 router.get("/", (req, res) => {
-  Post.findAll( { include: [User, Comment] } )
+  Post.findAll({ include: [User, Comment] })
     .then((dbPost) => {
       res.json(dbPost);
     })
@@ -43,34 +43,36 @@ router.post("/", async (req, res) => {
 
 //Update Route
 router.put("/:id", (req, res) => {
-  if(!req.session.user){
-    return res.status(401).json({msg:"Please login!"})
+  if (!req.session.user) {
+    return res.status(401).json({ msg: "Please login!" });
   }
   Post.update(req.body, {
-      where: {
-        id: req.params.id
-      }
-    }).then(updatedPost => {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((updatedPost) => {
       res.json(updatedPost);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json({ msg: "an error occured", err });
     });
 });
 
 router.delete("/:id", (req, res) => {
-  if(!req.session.user){
-    return res.status(401).json({msg:"Please login!"})
+  if (!req.session.user) {
+    return res.status(401).json({ msg: "Please login!" });
   }
-    Post.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(delPost => {
+  Post.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((delPost) => {
       res.json(delPost);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json({ msg: "an error occured", err });
     });
