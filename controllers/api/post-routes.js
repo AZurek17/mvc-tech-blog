@@ -1,14 +1,14 @@
-const router = require('express').Router();
-const { Post, Comment, User } = require('../../models');
-const {withAuth, areAuth } = require('../../utils/auth');
+const router = require("express").Router();
+const { Post, Comment, User } = require("../../models");
+const { withAuth, areAuth } = require("../../utils/auth");
 
 //Get all Posts
 router.get("/", (req, res) => {
-  Post.findAll({include:[User, Comment]})
-    .then(dbPost => {
+  Post.findAll( { include: [User, Comment] } )
+    .then((dbPost) => {
       res.json(dbPost);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json({ msg: "Error occured!", err });
     });
@@ -16,35 +16,30 @@ router.get("/", (req, res) => {
 
 //Find Post by ID
 router.get("/:id", (req, res) => {
-  Post.findByPk(req.params.id,{include:[User, Comment]})
-    .then(dbPost => {
+  Post.findByPk(req.params.id, { include: [User, Comment] })
+    .then((dbPost) => {
       res.json(dbPost);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json({ msg: "an error occured", err });
     });
 });
 
 //Create New Post
-router.post("/", (req, res) => {
-    if(!req.session.user){
-      return res.status(401).json({msg:"Please login!"})
-    }
-    Post.create({
-      title:req.body.title,
-      description:req.body.description,
-      userId:req.session.user.id
-    })
-      .then(newPost => {
-        res.json(newPost);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json({ msg: "Error occured!", err });
-      });
+router.post("/", async (req, res) => {
+  try {
+    const newPost = await Post.create({
+      title: req.body.title,
+      description: req.body.description,
+      userId: req.session.user.id,
+    });
+    res.status(201).json("You created a new post!");
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
-
 
 //Update Route
 router.put("/:id", (req, res) => {
@@ -60,7 +55,7 @@ router.put("/:id", (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({ msg: "Error occured!", err });
+      res.status(500).json({ msg: "an error occured", err });
     });
 });
 
@@ -81,4 +76,4 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-  module.exports = router;
+module.exports = router;

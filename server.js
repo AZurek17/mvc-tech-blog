@@ -11,6 +11,8 @@ const helpers = require('./utils/helpers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const { User, Blog, Comment } = require("./models");
+
 const sess = {
   secret: 'secret', //process.env.DB_SESSION_SECRET,
   cookie: {

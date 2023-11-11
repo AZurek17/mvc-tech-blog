@@ -12,23 +12,23 @@ hideCreateNew();
 newComment.addEventListener("submit",(event)=>{
     event.preventDefault()
     console.log('click')
-    existingPosts.hidden=true;
-    newPost.hidden =false;
+    existingPosts.hidden=false;
+    newComment.hidden =false;
     createNew.hidden =false;
 });
 
 newPost.addEventListener("submit", (event) => {
     var title = document.querySelector("#title").value;
-    var content = document.querySelector("#content").value
+    var description = document.querySelector("#content").value
     event.preventDefault()
     console.log('you clicked me')
-    if (!title || !content) {
+    if (!title || !description) {
         alert('Please enter both title and content')
         return;
     }
     const postObj = {
         title: title,
-        content: content,
+        description: description,
     }
     fetch("/api/posts",{
         method:"POST",

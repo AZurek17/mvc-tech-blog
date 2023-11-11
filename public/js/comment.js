@@ -3,7 +3,7 @@ document.querySelector("#newComment").addEventListener("submit",(event)=>{
   event.preventDefault();
   const comment = {
       description:document.querySelector("#comment").value,
-      postId:document.querySelector("#hiddenCommentId").value,
+      commentId:document.querySelector("#hiddenCommentId").value,
   }
   fetch("/api/comments", {
       method:"POST",

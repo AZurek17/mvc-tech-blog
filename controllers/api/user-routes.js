@@ -77,34 +77,34 @@ router.post("/login", (req, res) => {
   
 // update
 router.put("/:id", (req, res) => {
-    User.update(req.body, {
-      where: {
-        id: req.params.id
-      },
-      individualHooks: true
-    }).then(updatedUser => {
-      res.json(updatedUser);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ msg: "Error occured!", err });
-    });
+  User.update(req.body, {
+    where: {
+      id: req.params.id
+    },
+    individualHooks: true
+  }).then(updatedUser => {
+    res.json(updatedUser);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({ msg: "an error occured", err });
+  });
 });
   
 // delete
 router.delete("/:id", (req, res) => {
-    User.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(delUser => {
-      res.json(delUser);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
-    });
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(delUser => {
+    res.json(delUser);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({ msg: "an error occured", err });
   });
-  
+});
+
 
 module.exports = router;

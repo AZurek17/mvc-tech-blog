@@ -46,11 +46,11 @@ button {
   margin: 5px;
 }
 
-/* #newPost {
+#newcomment {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-} */
+}
 
 #content, #editedContent {
   width: 60vw;
