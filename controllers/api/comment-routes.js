@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
   }
   Comment.create({
     description: req.body.description,
-    // date: req.body.date,
+    date: req.body.date,
     userId: req.session.user.id,
     postId: req.body.postId,
   })

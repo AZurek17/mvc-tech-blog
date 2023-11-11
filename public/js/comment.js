@@ -22,13 +22,13 @@ document.querySelector("#newComment").addEventListener("submit", (event) => {
 //     event.preventDefault();
 
 //     const description = document.querySelector('#comment').value;
-//     const postId = document.querySelector("#hiddenCommentId").value;
+//     const user_id = document.querySelector("#hiddenCommentId").value;
 
 //     const response = await fetch(`/api/comments`, {
 //         method: 'POST',
 //         body: JSON.stringify({
 //           description,
-//           postId,
+//           user_id,
 //         }),
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -42,4 +42,4 @@ document.querySelector("#newComment").addEventListener("submit", (event) => {
 //       }
 //     }
 
-//     document.querySelector('#newComment').addEventListener('submit', newCommentHandler);
+//     document.querySelector('.new-comment-form').addEventListener('submit', newCommentHandler);
