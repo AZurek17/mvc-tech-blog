@@ -29,7 +29,7 @@ const sess = {
 };
 
 app.use(session(sess));
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
 const hbs = exphbs.create({ helpers });
 
