@@ -3,14 +3,13 @@
   <section class="card">
       <div class="card-body">
         <h3 class="card-title">{{dbPost.title}}</h3> 
-        {{!-- <h5>Posted on {{format_date date}}</h5> --}}
         <p class="card-text">{{dbPost.description}}</p>
     </div>
   </section>
 {{#each dbPost.comments}}
   <section class="card">
     <div class="card-body">
-      <p>Comment</p>
+      <p>Comment from {{user.username}} on {{format_date date}}</p>
       <p class="card-text">{{description}}</p>
     </div>
   </section>

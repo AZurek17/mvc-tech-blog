@@ -55,7 +55,7 @@ router.get("/posts/:id", (req, res) => {
       const dbPost = dbData.get({ plain: true });
       const loggedIn = req.session.user ? true : false;
       console.log(dbPost);
-      if (dbData.userId != req.session.user.id) {
+      if (dbData.user_id != req.session.user_id) {
         return res.render("comment", {
           dbPost,
           loggedIn,

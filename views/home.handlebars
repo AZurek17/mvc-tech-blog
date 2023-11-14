@@ -2,9 +2,10 @@
 {{#each posts}}
   <section class="card">
     <a href="/posts/{{id}}" class="card-body">
-      <h3 class="card-title">{{title}}</h3>
-      {{!-- <h5>Posted by {{user.username}} on {{format_time date}}</h5> --}}
+      <h3 class="card-title">Post Title:<br> {{title}}</h3>
+      <h5 class="card-text">Description:</h5>
       <p class="card-text">{{description}}</p>
+      <h6>Posted by {{user.username}}:</h6>
     </a>
   </section>
 {{/each}}
