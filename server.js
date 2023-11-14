@@ -12,10 +12,10 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// const { User, Blog, Comment } = require("./models");
+// const { User, Post, Comment } = require("./models");
 
 const sess = {
-  secret: process.env.SESSION_SECRET || "Super secret secret",
+  secret: "Super secret secret",
   cookie: {
     maxAge: 3600000, //1hr
   },
